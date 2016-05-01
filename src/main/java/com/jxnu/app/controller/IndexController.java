@@ -32,7 +32,6 @@ public class IndexController {
         } else {
             System.out.println("登录失败");
         }
-
         return modelAndView;
     }
 
