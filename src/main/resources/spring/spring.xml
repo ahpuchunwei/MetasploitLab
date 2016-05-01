@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd 
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+
+
+    <!-- 启用注解 -->
+    <context:annotation-config/>
+    <context:component-scan base-package="com.jxnu.app"/>
+
+    <!-- 加载配置文件 -->
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:db.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 阿里巴巴druid数据源父类 -->
+    <bean id="abstractDataSource" class="com.alibaba.druid.pool.DruidDataSource" abstract="true" init-method="init"
+          destroy-method="close">
+        <!-- 基本属性 -->
+        <property name="driverClassName" value="${db.driverClass}"/>
+
+        <!-- 配置初始化大小、最小、最大 -->
+        <property name="initialSize" value="1"/>
+        <property name="minIdle" value="1"/>
+        <property name="maxActive" value="20"/>
+
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="60000"/>
+
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="60000"/>
+
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value="300000"/>
+    </bean>
+
+    <bean id="dataSource" parent="abstractDataSource" destroy-method="close">
+        <property name="url" value="${db.url}"/>
+        <property name="username" value="${db.userName}"/>
+        <property name="password" value="${db.password}"/>
+    </bean>
+
+
+    <!-- sqlSessionFactory -->
+    <bean id="sqlSessionFacory" class="org.mybatis.spring.SqlSessionFactoryBean">
+
+        <!-- 数据库连接池 -->
+        <property name="dataSource" ref="dataSource"/>
+
+        <!-- 加载mybatis配置文件 <property name="configLocation" value="classpath:config/mybatis/SqlMapConfig.xml"/> -->
+
+        <property name="mapperLocations" value="classpath:/mybatis/*Mapper.xml"/>
+
+    </bean>
+
+    <!-- 支持上传文件 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+
+    <!-- 事务管理 -->
+    <bean id="txManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- 注解驱动 -->
+    <tx:annotation-driven transaction-manager="txManager"/>
+
+    <!--配置了以下代码才可以使用接口方法名和mapper.xml保持一致的方法来访问数据库 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- basePackage指定要扫描的包，在此包之下的映射器都会被 搜索到。可指定多个包，包与包之间用逗号或分号分隔。 -->
+        <property name="basePackage" value="com.jxnu.webapp.dao"/>
+    </bean>
+
+</beans>
