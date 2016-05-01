@@ -3,58 +3,5 @@
 
 <mapper namespace="com.jxnu.webapp.dao.UserDao">
 
-    <resultMap id="User" type="com.jxnu.webapp.model.User">
-        <id column="id" property="id" jdbcType="INTEGER"/>
-        <result column="username" property="userName" jdbcType="CHAR"/>
-        <result column="password" property="password" jdbcType="CHAR"/>
-        <result column="role_id" property="roleId" jdbcType="INTEGER"/>
-        <result column="email" property="mail" jdbcType="CHAR"/>
-        <result column="phone" property="phone" jdbcType="CHAR"/>
-        <result column="status" property="status" jdbcType="INTEGER"/>
-    </resultMap>
-
-
-    <sql id="Base_Column_List">
-		id, username,password,role_id,email,phone,status
-	</sql>
-
-    <insert id="add">
-		insert into user(username,password,role_id,email,phone,status)
-		values(#{userName},#{password},#{roleId},#{mail},#{phone},#{status})
-	</insert>
-
-    <update id="update">
-        UPDATE user set userName = #{userName}, password = #{password},role_id = #{roleId},email = #{mail},phone = #{phone},status = #{status} where id = #{id}
-    </update>
-
-    <select id="selectAll" resultMap="User">
-        select
-        <include refid="Base_Column_List"/>
-        from user
-    </select>
-
-    <select id="findPage" resultMap="User">
-        select
-        <include refid="Base_Column_List"/>
-        from user
-    </select>
-
-    <select id="selectByUserNameAndPass" resultMap="User">
-        select
-        <include refid="Base_Column_List"/>
-        from user WHERE username = #{userName} AND password = #{password}
-    </select>
-
-    <select id="count" resultType="Integer">
-        select count(*) from user
-    </select>
-
-    <delete id="delete">
-        delete from user where id = #{id}
-    </delete>
-
-    <select id="queryById" resultMap="User">
-        select * from user where id =  #{id}
-    </select>
 
 </mapper>

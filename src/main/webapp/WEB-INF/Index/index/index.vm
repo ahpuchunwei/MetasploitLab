@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="/style/css/style.css" type="text/css" rel="stylesheet"/>
+    <!-- 弹出框登录 -->
+    <link rel="stylesheet" type="text/css" media="all" href="style/css/style2.css">
+    <script type="text/javascript" src="style/script/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="style/script/jquery.leanModal.min.js"></script>
+</head>
+<body>
+<!-- 总导航标题 -->
+<div class="header" >
+    <div class="title">
+        <h2>计算机信息工程学院渗透测试实验室</h2>
+    </div>
+    <a href="#loginmodal" class="flatbtn" id="modaltrigger">登录</a>
+</div>
+<div class="main" >
+    <!--  /全部课程列表*/ -->
+
+    <div class="course-list" >
+        <h3>课程</h3>
+        <div course-list-more>更多</div>
+        <div class="test-course" >
+            <div class="test-image"  >
+                <a href="style/html/testlist.html"><img src="style/image/metasploit.jpg" ></a>
+            </div>
+            <p> <a href="style/html/testlist.html">渗透测试实验</a>
+                <span class="people">郭老师</span>
+            </p>
+        </div>
+
+        <div class="test-course" >
+            <div class="test-image">
+                <a href=""><img src="style/image/websecure.jpg"></a>
+            </div>
+            <p> <a href="">web安全实验</a>
+                <span class="people">郭老师</span>
+            </p>
+        </div>
+
+        <div class="test-course">
+            <div class="test-image">
+                <a href=""><img src="style/image/attack.jpg"></a>
+            </div>
+            <p> <a href="">网络攻击与对抗实验</a>
+                <span class="people" >郭老师</span>
+            </p>
+
+        </div>
+
+        <div class="test-course">
+            <div class="test-image">
+                <a href=""><img src="style/image/securetool.jpg"></a>
+            </div>
+            <p> <a href="">信息安全的工具</a>
+                <span class="people">郭老师</span>
+            </p>
+
+        </div>
+    </div>
+
+    <!-- /*资讯列表*/ -->
+    <div class="news">
+        <div class="news_hd">
+            <h3>安全资讯</h3>
+        </div>
+        <div class="news-list">
+            <ul>
+                <li><a href="http://www.2cto.com/News/201603/491827.html">Android手机比iPhone更容易被警方破解</a></li>
+                <li><a href="http://www.2cto.com/News/201603/491825.html">记者在飞机上使用笔记本电脑时被黑客入侵</a></li>
+                <li><a href="http://www.2cto.com/News/201603/493193.html">匿名黑客成功地从美联储备银行账户中窃取了一亿美金</a></li>
+                <li><a href="http://www.2cto.com/News/201603/493192.html">有人使用电子邮件对希捷科技公司实施了钓鱼诈骗</a></li>
+                <li><a href="http://www.2cto.com/News/201603/493191.html">任何的联网设备都有可能受到黑客的攻击</a></li>
+                <li><a href="http://www.2cto.com/News/201603/493190.html">央视315晚会将关注网络安全漏洞</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+</div>
+<!-- /*相关资源推荐*/ -->
+<div class="add-link">
+    <div class="ref-head-bd">
+        <div class="ref-header"><h3>相关网站推荐</h3>
+        </div>
+    </div>
+    <div >
+        <div class="ref-iamge" ><a href="http://www.freebuf.com/" target="_blank"><img src="style/image/hack.jpg"></a></div>
+        <div class="ref-iamge" ><a href="http://www.2cto.com/"><img src="style/image/2cto.jpg"></a></div>
+        <div class="ref-iamge" ><a href="http://www.wooyun.org/"><img src="style/image/wuyun.jpg"></a>	</div>
+        <div class="ref-iamge"><a href="http://sec.chinabyte.com/"><img src="style/image/chinabyte.jpg"></a></div>
+    </div>
+</div>
+
+<!-- 底部 -->
+<div class="footer">
+    <p>copyright@whowho</p>
+</div>
+<!-- 登录弹出框 -->
+
+<div id="loginmodal" style="display:none;">
+    <h1>登录</h1>
+    <form id="loginform" name="loginform" method="post" action="login.htm">
+        <label for="username">用户名:</label>
+        <input type="text" name="username" id="username" class="txtfield" tabindex="1">
+
+        <label for="password">密码:</label>
+        <input type="password" name="password" id="password" class="txtfield" tabindex="2">
+
+        <div class="center"><input type="submit" name="loginbtn" id="loginbtn" class="flatbtn-blu hidemodal" value="登录" tabindex="3"></div>
+    </form>
+</div>
+<script type="text/javascript">
+    $(function(){
+//        $('#loginform').submit(function(e){
+//            return false;
+//        });
+
+        $('#modaltrigger').leanModal({ top: 110, overlay: 0.45, closeButton: ".hidemodal" });
+    });
+</script>
+</body>
+</html>
