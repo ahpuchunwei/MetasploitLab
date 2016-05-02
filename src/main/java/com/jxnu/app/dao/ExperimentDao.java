@@ -19,5 +19,5 @@ public interface ExperimentDao {
 
     List<Experiment> findAll();
 
-
+    List<Experiment> queryByCourseId(Long id);
 }

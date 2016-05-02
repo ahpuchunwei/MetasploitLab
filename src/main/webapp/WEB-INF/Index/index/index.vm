@@ -13,60 +13,35 @@
 </head>
 <body>
 <!-- 总导航标题 -->
-<div class="header" >
+<div class="header">
     <div class="title">
         <h2>计算机信息工程学院渗透测试实验室</h2>
     </div>
 
     #if($!session.getAttribute("user"))
-        Hi,欢迎您! $!{session.getAttribute("user").userName} <a href="http://localhost:8080/logout.htm" class="signin-loader">[退出登录]</a>
+        Hi,欢迎您! $!{session.getAttribute("user").userName} <a href="http://localhost:8080/logout.htm"
+                                                             class="signin-loader">[退出登录]</a>
     #else
         <a href="#loginmodal" class="flatbtn" id="modaltrigger">登录</a>
     #end
 </div>
-<div class="main" >
+<div class="main">
     <!--  /全部课程列表*/ -->
 
-    <div class="course-list" >
+    <div class="course-list">
         <h3>课程</h3>
-        <div course-list-more >  <a href="/courseList.htm">更多 </a> </div>
-        <div class="test-course" >
-            <div class="test-image"  >
-                <a href="/testList.htm"><img src="style/image/metasploit.jpg" ></a>
+        <div course-list-more><a href="/courseList.htm">更多 </a></div>
+        #foreach($course in $courseList)
+            <div class="test-course">
+                <div class="test-image">
+                    <a href="/courseDetail.htm?id=$!{course.id}"><img src="$!{course.image_url}"></a>
+                </div>
+
+                <p><a href="/courseDetail.htm?id=$!{course.id}">$!{course.name}</a>
+                    <span class="people">$!{course.teacher}</span>
+                </p>
             </div>
-            <p> <a href="/testList.htm">渗透测试实验</a>
-                <span class="people">郭老师</span>
-            </p>
-        </div>
-
-        <div class="test-course" >
-            <div class="test-image">
-                <a href=""><img src="style/image/websecure.jpg"></a>
-            </div>
-            <p> <a href="">web安全实验</a>
-                <span class="people">郭老师</span>
-            </p>
-        </div>
-
-        <div class="test-course">
-            <div class="test-image">
-                <a href=""><img src="style/image/attack.jpg"></a>
-            </div>
-            <p> <a href="">网络攻击与对抗实验</a>
-                <span class="people" >郭老师</span>
-            </p>
-
-        </div>
-
-        <div class="test-course">
-            <div class="test-image">
-                <a href=""><img src="style/image/securetool.jpg"></a>
-            </div>
-            <p> <a href="">信息安全的工具</a>
-                <span class="people">郭老师</span>
-            </p>
-
-        </div>
+        #end
     </div>
 
     <!-- /*资讯列表*/ -->
@@ -78,7 +53,7 @@
 
             <ul>
                 #foreach($news in $NewsList)
-                <li><a href="$!{news.content}">$!{news.title}</a></li>
+                    <li><a href="$!{news.content}">$!{news.title}</a></li>
                 #end
             </ul>
 
@@ -93,10 +68,11 @@
         <div class="ref-header"><h3>相关网站推荐</h3>
         </div>
     </div>
-    <div >
-        <div class="ref-iamge" ><a href="http://www.freebuf.com/" target="_blank"><img src="style/image/hack.jpg"></a></div>
-        <div class="ref-iamge" ><a href="http://www.2cto.com/"><img src="style/image/2cto.jpg"></a></div>
-        <div class="ref-iamge" ><a href="http://www.wooyun.org/"><img src="style/image/wuyun.jpg"></a>	</div>
+    <div>
+        <div class="ref-iamge"><a href="http://www.freebuf.com/" target="_blank"><img src="style/image/hack.jpg"></a>
+        </div>
+        <div class="ref-iamge"><a href="http://www.2cto.com/"><img src="style/image/2cto.jpg"></a></div>
+        <div class="ref-iamge"><a href="http://www.wooyun.org/"><img src="style/image/wuyun.jpg"></a></div>
         <div class="ref-iamge"><a href="http://sec.chinabyte.com/"><img src="style/image/chinabyte.jpg"></a></div>
     </div>
 </div>
@@ -116,16 +92,17 @@
         <label for="password">密码:</label>
         <input type="password" name="password" id="password" class="txtfield" tabindex="2">
 
-        <div class="center"><input type="submit" name="loginbtn" id="loginbtn" class="flatbtn-blu hidemodal" value="登录" tabindex="3"></div>
+        <div class="center"><input type="submit" name="loginbtn" id="loginbtn" class="flatbtn-blu hidemodal" value="登录"
+                                   tabindex="3"></div>
     </form>
 </div>
 <script type="text/javascript">
-    $(function(){
+    $(function () {
 //        $('#loginform').submit(function(e){
 //            return false;
 //        });
 
-        $('#modaltrigger').leanModal({ top: 110, overlay: 0.45, closeButton: ".hidemodal" });
+        $('#modaltrigger').leanModal({top: 110, overlay: 0.45, closeButton: ".hidemodal"});
     });
 </script>
 </body>

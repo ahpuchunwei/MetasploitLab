@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.jxnu.app.dao.ExperimentDao">
-    <resultMap id="Experiment" type="com.jxnu.app.model.Experiment" >
+    <resultMap id="Experiment" type="com.jxnu.app.model.Experiment">
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="title" property="title" jdbcType="CHAR"/>
         <result column="content" property="content" jdbcType="CHAR"/>
@@ -30,4 +30,7 @@
           UPDATE  experiment set title=#{title},content = #{content},courseId = #{courseId} where id = #{id}
     </update>
 
+    <select id="queryByCourseId" resultMap="Experiment">
+        SELECT * from experiment where courseId= #{id}
+    </select>
 </mapper>

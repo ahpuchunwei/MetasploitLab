@@ -5,12 +5,11 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/style/css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="/style/css/bootstrap-responsive.css" />
-    <link rel="stylesheet" type="text/css" href="/style/css/style.css" />
     <script type="text/javascript" src="/style/Js/jquery.js"></script>
-    <script type="text/javascript" src="/style/Js/jquery.sorted.js"></script>
     <script type="text/javascript" src="/style/Js/bootstrap.js"></script>
-    <script type="text/javascript" src="/style/Js/ckform.js"></script>
-    <script type="text/javascript" src="/style/Js/common.js"></script>
+
+    <script type="text/javascript" charset="utf-8" src="/uedit/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/uedit/ueditor.all.js"> </script>
 
     <style type="text/css">
         body {
@@ -41,7 +40,9 @@
     </tr>
     <tr>
         <td width="15%" class="tableleft">实验内容</td>
-        <td><input type="text" name="content"/></td>
+        <td>
+            <script id="editor" type="text/plain" style="width:1000px;height:500px;"></script>
+        </td>
     </tr>
 
     <tr>
@@ -64,8 +65,15 @@
     </tr>
 </table>
 </form>
+
+
 </body>
 </html>
+
+<script type="text/javascript">
+    var ue = UE.getEditor('editor');
+    ue.setHeight(500)
+</script>
 <script>
     $(function () {       
 		$('#backid').click(function(){

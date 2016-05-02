@@ -1,8 +1,12 @@
 package com.jxnu.app.controller;
 
 import com.jxnu.app.dao.NewsDao;
+import com.jxnu.app.model.Course;
+import com.jxnu.app.model.Experiment;
 import com.jxnu.app.model.News;
 import com.jxnu.app.model.User;
+import com.jxnu.app.service.CourseService;
+import com.jxnu.app.service.ExperimentService;
 import com.jxnu.app.service.NewsService;
 import com.jxnu.app.service.UserService;
 import org.apache.commons.lang.StringUtils;
@@ -29,12 +33,19 @@ public class IndexController {
     NewsService newsService;
     @Autowired
     UserService userService;
+    @Autowired
+    CourseService courseService;
+    @Autowired
+    ExperimentService experimentService;
 
     @RequestMapping("/index")
     public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView("Index/index/index");
         List<News> newsList = newsService.findAll();
         modelAndView.addObject("NewsList", newsList);
+
+        List<Course> courseList = courseService.findAll();
+        modelAndView.addObject("courseList", courseList);
 
         return modelAndView;
     }
@@ -54,6 +65,9 @@ public class IndexController {
     @RequestMapping("/testList")
     public ModelAndView testList() {
         ModelAndView modelAndView = new ModelAndView("Index/index/testList");
+        List<Experiment> experimentList = experimentService.findAll();
+        modelAndView.addObject("experimentList", experimentList);
+
         return modelAndView;
     }
 

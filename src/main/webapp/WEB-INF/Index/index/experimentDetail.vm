@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="/style/css/style.css" type="text/css" rel="stylesheet"/>
+    <!-- 实验导航样式 -->
+
+    <link rel="stylesheet" type="text/css" href="/style/css/normalize.css"/>
+    <link rel="stylesheet" type="text/css" href="/style/css/tabs.css"/>
+    <link rel="stylesheet" type="text/css" href="/style/css/tabstyles.css"/>
+    <script src="/style/script/modernizr.custom.js"></script>
+    <!-- 实验列表样式 -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="/style/script/jquery.jumpto.js"></script>
+    <link href='/style/css/jumpto.css' rel='stylesheet' type='text/css'>
+    <link href='/style/css/jumpto2.css' rel='stylesheet' type='text/css'>
+    <script>
+        $(document).ready(function () {
+            $(".page_container").jumpto({
+                firstLevel: "> h2",
+                secondLevel: "> h3"
+            });
+        });
+
+    </script>
+
+</head>
+<body>
+<!-- 总的导航标题 -->
+<div class="header">
+    <div class="title">
+        <h2>计算机信息工程学院渗透测试实验室</h2>
+    </div>
+
+    <div class="hd-menu"><a href="/index.htm" target="">课程</a></div>
+</div>
+<!-- 实验课程标题 -->
+<section>
+    <div class="course-infos bg">
+        <div class="mask"></div>
+        <img src="/style/image/testbg.jpg" width="100%">
+        <div class="w pr">
+
+
+            <div class="hd">
+                <h2 class="1">$!{experiment.title}</h2>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- 课程实验列表 -->
+<section>
+    <div class="tabs tabs-style-linebox">
+        <nav>
+            <ul>
+                <li><a href="#section-linebox-5"><span>实验指导书</span></a></li>
+                <li><a href="#section-linebox-4"><span>提交实验报告</span></a></li>
+                <li><a href="#section-linebox-2"><span>疑问解答</span></a></li>
+                </a></li>
+            </ul>
+        </nav>
+        <div class="content-wrap">
+            <section id="section-linebox-1">
+                <div class="wrapper">
+                    <div class="main">
+                        <div class="page_container">
+                            $!{experiment.content}
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="section-linebox-2"><p>
+                <div class="upload-test-file">
+                    <form enctype="multipart/form-data" action="/style/php/uploader.php" method="POST">
+                        <input type="hidden" name="MAX_FILE_SIZE" value="100000"/> 请选择要上传的实验报告！ </br>
+                        <input name="uploadedfile" type="file"/><br/>
+                        <input type="submit" value="上传实验报告"/></form>
+                </div>
+                </p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p></section>
+            <section id="section-linebox-3"><p>3</p></section>
+
+        </div><!-- /content -->
+    </div><!-- /tabs -->
+</section>
+
+<!--底部信息 -->
+<div class="footer">
+    <p>copyright@whowho</p>
+    <script src="/style/script/cbpFWTabs.js"></script>
+    <script>
+        (function () {
+
+            [].slice.call(document.querySelectorAll('.tabs')).forEach(function (el) {
+                new CBPFWTabs(el);
+            });
+
+        })();
+    </script>
+</div>
+</body>
+</html>

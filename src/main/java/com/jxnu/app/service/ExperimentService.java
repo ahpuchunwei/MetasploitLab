@@ -19,4 +19,6 @@ public interface ExperimentService {
 
     List<Experiment> findAll();
 
+    List<Experiment> queryByCourseId(Long id);
+
 }

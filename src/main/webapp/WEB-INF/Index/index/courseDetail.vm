@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="/style/css/style.css" type="text/css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="/style/css/normalize.css"/>
+    <link rel="stylesheet" type="text/css" href="/style/css/tabs.css"/>
+    <link rel="stylesheet" type="text/css" href="/style/css/tabstyles.css"/>
+    <script src="/style/script/modernizr.custom.js"></script>
+</head>
+<body>
+<!-- 总的导航标题 -->
+<div class="header">
+    <div class="title">
+        <h2>计算机信息工程学院渗透测试实验室</h2>
+    </div>
+
+    <div class="hd-menu"><a href="/style/html/metasploit.html" target="">课程</a></div>
+</div>
+
+<!-- 实验课程标题 -->
+<section>
+    <div class="course-infos bg">
+        <div class="mask"></div>
+        <img src="/style/image/testlistbg.jpg" width="100%;">
+        <div class="w pr">
+
+            <div class="hd">
+                <h2 class="1">${course.name}</h2>
+                <div class="abstract">${course.introduction}</div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- 课程实验列表 -->
+<section class="section-bg-col">
+    <div class="tabs tabs-style-flip">
+        <nav>
+            <ul>
+                <li><a href="#section-flip-5" class="icon icon-box"><span>实验列表</span></a></li>
+                <li><a href="#section-flip-4" class="icon icon-gift"><span>实验评价</span></a></li>
+                <li><a href="#section-flip-2" class="icon icon-display"><span>疑问解答</span></a></li>
+                <li><a href="#section-flip-3" class="icon icon-date"><span>笔记</span></a></li>
+                <li><a href="#section-flip-5" class="icon icon-plug"><span>分數</span></a></li>
+            </ul>
+        </nav>
+        <div class="content-wrap">
+            <section class="section-testlist" id="section-flip-1">
+                <div class="test-list">
+                    <ul>
+                        #foreach($experiment in $experimentList)
+                            <li><a href="/experimentDetail.htm?id=$!{experiment.id}">$!{experiment.title}</a></li>
+                        #end
+                    </ul>
+                </div>
+            </section>
+            <section class="section-testlist" id="section-flip-2">
+                <!-- 多说评论框 start -->
+                <div class="ds-thread" data-thread-key="1" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
+                <!-- 多说评论框 end -->
+                <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+                <script type="text/javascript">
+                    var duoshuoQuery = {short_name: "metaploitlab"};
+                    (function () {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0]
+                        || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- 多说公共JS代码 end -->
+
+            </section>
+            <section class="section-testlist" id="section-flip-3"><p>3</p></section>
+            <section class="section-testlist" id="section-flip-4"><p>
+                <table>
+                <tr><td>用户名</td> </tr>
+                <tr><td>笔记内容</td></tr>
+                </table>
+                <form  action="/addNote.htm" method="post">
+                    <input type="hidden" name="id" value="$!{course.id}" />
+                    <p>实验笔记</p>
+                   <textarea name=content cols="100" rows="10"></textarea>
+                    <P><button type="submit" class="btn btn-primary" type="button" >保存</button></P>
+            </form>
+            </p></section>
+            <section class="section-testlist" id="section-flip-5"><p>5</p></section>
+        </div><!-- /content -->
+    </div><!-- /tabs -->
+</section>
+
+<!--底部信息 -->
+<div class="footer">
+    <p>copyright@whowho</p>
+    <script src="/style/script/cbpFWTabs.js"></script>
+    <script>
+        (function () {
+
+            [].slice.call(document.querySelectorAll('.tabs')).forEach(function (el) {
+                new CBPFWTabs(el);
+            });
+
+        })();
+    </script>
+</div>
+</body>
+</html>
