@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jxnu.app.dao.ExperimentDao">
+    <resultMap id="Experiment" type="com.jxnu.app.model.Experiment" >
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="title" property="title" jdbcType="CHAR"/>
+        <result column="content" property="content" jdbcType="CHAR"/>
+        <result column="courseId" property="courseId" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="Experiment">
+        select * from experiment
+    </select>
+
+    <insert id="addExperiment">
+        insert into experiment(title,content,courseId)
+        values(#{title},#{content},#{courseId})
+    </insert>
+
+    <delete id="deleteExperiment">
+        delete from experiment where id=#{id};
+    </delete>
+
+    <select id="queryById" resultMap="Experiment">
+        select  * FROM  experiment WHERE id=#{id};
+    </select>
+
+    <update id="updateExperiment">
+          UPDATE  experiment set title=#{title},content = #{content},courseId = #{courseId} where id = #{id}
+    </update>
+
+</mapper>

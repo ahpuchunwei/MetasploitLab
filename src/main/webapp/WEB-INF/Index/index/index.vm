@@ -17,19 +17,24 @@
     <div class="title">
         <h2>计算机信息工程学院渗透测试实验室</h2>
     </div>
-    <a href="#loginmodal" class="flatbtn" id="modaltrigger">登录</a>
+
+    #if($!session.getAttribute("user"))
+        Hi,欢迎您! $!{session.getAttribute("user").userName} <a href="http://localhost:8080/logout.htm" class="signin-loader">[退出登录]</a>
+    #else
+        <a href="#loginmodal" class="flatbtn" id="modaltrigger">登录</a>
+    #end
 </div>
 <div class="main" >
     <!--  /全部课程列表*/ -->
 
     <div class="course-list" >
         <h3>课程</h3>
-        <div course-list-more>更多</div>
+        <div course-list-more >  <a href="/courseList.htm">更多 </a> </div>
         <div class="test-course" >
             <div class="test-image"  >
-                <a href="style/html/testlist.html"><img src="style/image/metasploit.jpg" ></a>
+                <a href="/testList.htm"><img src="style/image/metasploit.jpg" ></a>
             </div>
-            <p> <a href="style/html/testlist.html">渗透测试实验</a>
+            <p> <a href="/testList.htm">渗透测试实验</a>
                 <span class="people">郭老师</span>
             </p>
         </div>
@@ -70,14 +75,13 @@
             <h3>安全资讯</h3>
         </div>
         <div class="news-list">
+
             <ul>
-                <li><a href="http://www.2cto.com/News/201603/491827.html">Android手机比iPhone更容易被警方破解</a></li>
-                <li><a href="http://www.2cto.com/News/201603/491825.html">记者在飞机上使用笔记本电脑时被黑客入侵</a></li>
-                <li><a href="http://www.2cto.com/News/201603/493193.html">匿名黑客成功地从美联储备银行账户中窃取了一亿美金</a></li>
-                <li><a href="http://www.2cto.com/News/201603/493192.html">有人使用电子邮件对希捷科技公司实施了钓鱼诈骗</a></li>
-                <li><a href="http://www.2cto.com/News/201603/493191.html">任何的联网设备都有可能受到黑客的攻击</a></li>
-                <li><a href="http://www.2cto.com/News/201603/493190.html">央视315晚会将关注网络安全漏洞</a></li>
+                #foreach($news in $NewsList)
+                <li><a href="$!{news.content}">$!{news.title}</a></li>
+                #end
             </ul>
+
         </div>
     </div>
 

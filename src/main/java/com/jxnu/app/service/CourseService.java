@@ -1,4 +1,4 @@
-package com.jxnu.app.dao;
+package com.jxnu.app.service;
 
 import com.jxnu.app.model.Course;
 
@@ -7,8 +7,7 @@ import java.util.List;
 /**
  * Created by puchunwei on 16/5/1.
  */
-public interface CourseDao {
-
+public interface CourseService {
     void addCourse(Course course);
 
     void deleteCourse(Long id);

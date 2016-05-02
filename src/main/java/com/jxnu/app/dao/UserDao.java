@@ -19,4 +19,6 @@ public interface UserDao {
 
     List<User> findAll();
 
+    List<User> queryByNameAndPassword(User user);
+
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jxnu.app.dao.CourseDao">
+    <resultMap id="Course" type="com.jxnu.app.model.Course">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="CHAR"/>
+        <result column="introduction" property="introduction" jdbcType="CHAR"/>
+        <result column="teacher" property="teacher" jdbcType="INTEGER"/>
+        <result column="image_url" property="image_url" jdbcType="CHAR"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="Course">
+        select
+        *
+        from course
+    </select>
+
+    <insert id="addCourse">
+        insert into course(name,introduction,teacher,image_url)
+        values(#{name},#{introduction},#{teacher},#{image_url})
+    </insert>
+
+    <delete id="deleteCourse">
+        delete from course where id=#{id};
+    </delete>
+
+    <select id="queryById" resultMap="Course">
+        select  * FROM  course WHERE id=#{id};
+    </select>
+
+    <update id="updateCourse">
+        UPDATE course set  name=#{name},introduction= #{introduction},teacher= #{teacher},image_url= #{image_url} where id = #{id}
+    </update>
+
+</mapper>

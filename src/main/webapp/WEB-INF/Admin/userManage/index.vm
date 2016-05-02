@@ -36,7 +36,7 @@
 </head>
 <body>
 <br>
-<form class="form-inline definewidth m20" action="index.html" method="get">
+<form class="form-inline definewidth m20" action="index.htm" method="get">
     用户名称：
     <input type="text" name="username" id="username" class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
     <button type="submit" class="btn btn-primary">查询</button>
@@ -54,16 +54,21 @@
         <th>操作</th>
     </tr>
     </thead>
-    <tr>
-        <td>2</td>
-        <td>admin</td>
-        <td>admin</td>
-        <td>管理员</td>
-        <td></td>
-        <td>
-            <a href="edit.html">编辑</a>
-        </td>
-    </tr>
+
+
+    #foreach($user in $userList)
+        <tr>
+            <td>$!{user.id}</td>
+            <td>$!{user.userName}</td>
+            <td>$!{user.password}</td>
+            <td>管理员</td>
+            <td></td>
+            <td>
+                <a href="/editUserUI.htm?id=$!{user.id}">编辑</a>
+                <a href="/deleteUser.htm?id=$!{user.id}">删除</a>
+            </td>
+        </tr>
+    #end
 </table>
 </body>
 </html>
@@ -84,7 +89,7 @@
 
         if (confirm("确定要删除吗？")) {
 
-            var url = "index.html";
+            var url = "index.htm";
 
             window.location.href = url;
 

@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by puchunwei on 16/5/1.
  */
-public interface newsDao {
+public interface NewsDao {
 
     void addNews(News news);
 

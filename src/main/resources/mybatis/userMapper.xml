@@ -1,7 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.jxnu.webapp.dao.UserDao">
+<mapper namespace="com.jxnu.app.dao.UserDao">
+    <resultMap id="User" type="com.jxnu.app.model.User">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="username" property="userName" jdbcType="CHAR"/>
+        <result column="password" property="password" jdbcType="CHAR"/>
+    </resultMap>
 
+    <insert id="addUser">
+        insert into user(username,password)
+        values(#{userName},#{password})
+    </insert>
 
+    <select id="findAll" resultMap="User">
+        select
+        *
+        from user
+    </select>
+
+    <delete id="deleteUser">
+            delete from user where id=#{id};
+    </delete>
+
+    <select id="queryById" resultMap="User">
+        select  * FROM  user WHERE id=#{id};
+    </select>
+
+    <select id="queryByNameAndPassword" resultMap="User">
+        select  * FROM  user WHERE  username=#{userName} and password = #{password}
+    </select>
+
+    <update id="updateUser">
+        UPDATE user set username=#{userName},password = #{password} where id = #{id}
+    </update>
 </mapper>

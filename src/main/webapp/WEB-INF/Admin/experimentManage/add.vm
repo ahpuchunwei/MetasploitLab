@@ -12,8 +12,6 @@
     <script type="text/javascript" src="/style/Js/ckform.js"></script>
     <script type="text/javascript" src="/style/Js/common.js"></script>
 
- 
-
     <style type="text/css">
         body {
             padding-bottom: 40px;
@@ -35,24 +33,29 @@
     </style>
 </head>
 <body>
-<form action="/addUser.htm" method="post" class="definewidth m20">
-<table class="table table-bordered table-hover definewidth m10">
+<form action="/addExperiment.htm" method="post" class="definewidth m20">
+<table class="table table-bordered table-hover m10">
     <tr>
-        <td width="10%" class="tableleft">登录名</td>
-        <td><input type="text" name="username"/></td>
+        <td width="15%" class="tableleft">实验标题</td>
+        <td><input type="text" name="title"/></td>
     </tr>
     <tr>
-        <td class="tableleft">密码</td>
-        <td><input type="password" name="password"/></td>
+        <td width="15%" class="tableleft">实验内容</td>
+        <td><input type="text" name="content"/></td>
     </tr>
+
     <tr>
-        <td class="tableleft">状态</td>
-        <td>
-            <input type="radio" name="status" value="1" checked/> 启用
-           <input type="radio" name="status" value="0"/> 禁用
-        </td>
+        <td width="15%" class="tableleft">课程id</td>
+        <td >
+
+            <select name="courseId">
+                #foreach($course in $courseList)
+            <option value="$!{course.id}">$!{course.name}</option>
+                 #end
+        </select>
+           </td>
+
     </tr>
-   
     <tr>
         <td class="tableleft"></td>
         <td>
@@ -66,7 +69,7 @@
 <script>
     $(function () {       
 		$('#backid').click(function(){
-				window.location.href="index.html";
+				window.location.href="/Admin/experimentManage/index";
 		 });
 
     });

@@ -8,7 +8,6 @@ public class Experiment {
     private Long   id;
     private String title;
     private String content;
-    private String submit;
     private Long   courseId;
 
     public String getContent() {
@@ -35,13 +34,6 @@ public class Experiment {
         this.id = id;
     }
 
-    public String getSubmit() {
-        return submit;
-    }
-
-    public void setSubmit(String submit) {
-        this.submit = submit;
-    }
 
     public String getTitle() {
         return title;

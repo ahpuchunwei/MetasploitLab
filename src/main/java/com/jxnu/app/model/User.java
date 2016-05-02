@@ -9,7 +9,7 @@ public class User {
 
     private String userName;
 
-    private String passWord;
+    private String password;
 
     private Long   type;
 
@@ -21,12 +21,12 @@ public class User {
         this.id = id;
     }
 
-    public String getPassWord() {
-        return passWord;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Long getType() {

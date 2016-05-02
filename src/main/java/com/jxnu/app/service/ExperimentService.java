@@ -1,4 +1,4 @@
-package com.jxnu.app.dao;
+package com.jxnu.app.service;
 
 import com.jxnu.app.model.Experiment;
 
@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by puchunwei on 16/5/1.
  */
-public interface ExperimentDao {
+public interface ExperimentService {
 
     void addExperiment(Experiment experiment);
 
@@ -18,6 +18,5 @@ public interface ExperimentDao {
     void updateExperiment(Experiment experiment);
 
     List<Experiment> findAll();
-
 
 }

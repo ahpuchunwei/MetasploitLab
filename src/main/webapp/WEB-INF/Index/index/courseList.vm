@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link href="/style/css/style.css" type="text/css" rel="stylesheet"/>
+	<!-- 弹出框登录 -->
+	 <link rel="stylesheet" type="text/css" media="all" href="/style/css/style2.css">
+ 	 <script type="text/javascript" src="/style/script/jquery-1.9.1.min.js"></script>
+  	<script type="text/javascript" charset="utf-8" src="/style/script/jquery.leanModal.min.js"></script>
+</head>
+<body>
+<!-- 总导航标题 -->
+<div class="header" >
+	<div class="title">
+		<h2>计算机信息工程学院渗透测试实验室</h2>
+	</div>
+	<div class="hd-menu"><a href="" target="_self" >课程</a></div>
+	<a href="#loginmodal" class="flatbtn" id="modaltrigger">登录</a>
+</div>
+<div class="main" >
+   <!--  /全部课程列表*/ -->
+  
+	<div class="course-list-more" >
+		<h3>所有课程</h3>		
+		<div class="test-course-more" >
+			<div class="test-image"  >
+				<a href="/style/html/testlist.html"><img src="/style/image/metasploit.jpg" ></a>
+			</div>
+				<p> <a href="/style/html/testlist.html">渗透测试实验</a>
+				<span class="people">郭老师</span> 
+			</p>
+		</div>
+		
+		<div class="test-course-more" >
+			<div class="test-image">
+				<a href=""><img src="/style/image/websecure.jpg"></a>
+			</div>
+				<p> <a href="">web安全实验</a>
+				<span class="people">郭老师</span> 
+			</p>
+		</div>
+		
+		<div class="test-course-more">
+			<div class="test-image">
+				<a href=""><img src="/style/image/attack.jpg"></a>
+			</div>	
+				<p> <a href="">网络攻击与对抗实验</a>
+				<span class="people" >郭老师</span> 
+		</p>	
+		
+		</div>
+		
+		<div class="test-course-more">
+			<div class="test-image">
+				<a href=""><img src="/style/image/securetool.jpg"></a>
+			</div>
+				<p> <a href="">信息安全的工具</a>
+				<span class="people">郭老师</span> 
+		</p>	
+			
+		</div>
+
+		<div class="test-course-more" >
+			<div class="test-image"  >
+				<a href="/style/html/testlist.html"><img src="/style/image/metasploit.jpg" ></a>
+			</div>
+				<p> <a href="/style/html/testlist.html">渗透测试实验</a>
+				<span class="people">郭老师</span> 
+			</p>
+		</div>
+		
+		<div class="test-course-more" >
+			<div class="test-image">
+				<a href=""><img src="/style/image/websecure.jpg"></a>
+			</div>
+				<p> <a href="">web安全实验</a>
+				<span class="people">郭老师</span> 
+			</p>
+		</div>
+		
+		<div class="test-course-more">
+			<div class="test-image">
+				<a href=""><img src="/style/image/attack.jpg"></a>
+			</div>	
+				<p> <a href="">网络攻击与对抗实验</a>
+				<span class="people" >郭老师</span> 
+		</p>	
+		
+		</div>
+		
+		<div class="test-course-more">
+			<div class="test-image">
+				<a href=""><img src="/style/image/securetool.jpg"></a>
+			</div>
+				<p> <a href="">信息安全的工具</a>
+				<span class="people">郭老师</span> 
+		</p>	
+			
+		</div>
+	</div>
+	<div ><p></p></div>
+
+<!-- 底部 -->
+<div class="footer">
+	<p>copyright@whowho</p>
+</div> 
+<!-- 登录弹出框 -->
+ 
+  <div id="loginmodal" style="display:none;">
+    <h1>登录</h1>
+    <form id="loginform" name="loginform" method="post" action="login.php">
+      <label for="username">用户名:</label>
+      <input type="text" name="username" id="username" class="txtfield" tabindex="1">
+      
+      <label for="password">密码:</label>
+      <input type="password" name="password" id="password" class="txtfield" tabindex="2">
+      
+      <div class="center"><input type="submit" name="loginbtn" id="loginbtn" class="flatbtn-blu hidemodal" value="登录" tabindex="3"></div>
+    </form>
+  </div>
+<script type="text/javascript">
+$(function(){
+  $('#loginform').submit(function(e){
+    return false;
+  });
+  
+  $('#modaltrigger').leanModal({ top: 110, overlay: 0.45, closeButton: ".hidemodal" });
+});
+</script>
+</body>
+</html>

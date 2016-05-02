@@ -12,8 +12,6 @@
     <script type="text/javascript" src="/style/Js/ckform.js"></script>
     <script type="text/javascript" src="/style/Js/common.js"></script>
 
- 
-
     <style type="text/css">
         body {
             padding-bottom: 40px;
@@ -35,24 +33,34 @@
     </style>
 </head>
 <body>
-<form action="/addUser.htm" method="post" class="definewidth m20">
+<form action="/editCourse.htm" method="post" class="definewidth m20" >
+<input type="hidden" name="id" value="$!{course.id}" />
 <table class="table table-bordered table-hover definewidth m10">
-    <tr>
-        <td width="10%" class="tableleft">登录名</td>
-        <td><input type="text" name="username"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">密码</td>
-        <td><input type="password" name="password"/></td>
-    </tr>
+
+
+       <tr>
+            <td width="10%" class="tableleft">课程名称</td>
+            <td><input type="text" name="name" value="$!{course.name}"/></td>
+        </tr>
+          <tr>
+            <td width="10%" class="tableleft">实验简介</td>
+            <td><input type="text" name="introduction" value="$!{course.introduction} "/></td>
+        </tr>
+          <tr>
+            <td width="10%" class="tableleft">课程教师</td>
+            <td><input type="text" name="teacher" value="$!{course.teacher}"/></td>
+        </tr>
+          <tr>
+            <td width="10%" class="tableleft">图片</td>
+            <td><input type="text" name="image_url" value="$!{course.image_url}"/></td>#* 需要上传图片吗?*#
+        </tr>
     <tr>
         <td class="tableleft">状态</td>
         <td>
-            <input type="radio" name="status" value="1" checked/> 启用
-           <input type="radio" name="status" value="0"/> 禁用
+            <input type="radio" name="status" value="1" checked /> 启用
+           <input type="radio" name="status" value="0"  /> 禁用
         </td>
     </tr>
-   
     <tr>
         <td class="tableleft"></td>
         <td>
@@ -64,7 +72,11 @@
 </body>
 </html>
 <script>
-    $(function () {       
+    $(function () {
+        $(':checkbox[name="group[]"]').click(function () {
+            $(':checkbox', $(this).closest('li')).prop('checked', this.checked);
+        });
+
 		$('#backid').click(function(){
 				window.location.href="index.html";
 		 });

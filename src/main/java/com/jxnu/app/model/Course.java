@@ -8,8 +8,8 @@ public class Course {
     private Long   id;
     private String name;
     private String introduction;
-    private String teacher;
-    private String url;
+    private Long teacher;
+    private String image_url;
 
     public Long getId() {
         return id;
@@ -35,19 +35,19 @@ public class Course {
         this.name = name;
     }
 
-    public String getTeacher() {
+    public Long getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(String teacher) {
+    public void setTeacher(Long teacher) {
         this.teacher = teacher;
     }
 
-    public String getUrl() {
-        return url;
+    public String getImage_url() {
+        return image_url;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
     }
 }

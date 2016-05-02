@@ -12,8 +12,6 @@
     <script type="text/javascript" src="/style/Js/ckform.js"></script>
     <script type="text/javascript" src="/style/Js/common.js"></script>
 
- 
-
     <style type="text/css">
         body {
             padding-bottom: 40px;
@@ -35,28 +33,34 @@
     </style>
 </head>
 <body>
-<form action="/editUser.htm" method="post" class="definewidth m20">
-<input type="hidden" name="id" value="$!{user.id}" />
+<form action="/addCourse.htm" method="post" class="definewidth m20">
     <table class="table table-bordered table-hover definewidth m10">
-        <tr>
-            <td width="10%" class="tableleft">登录名</td>
-            <td><input type="text" name="username" value="$!{user.userName}"/></td>
+          <tr>
+            <td width="10%" class="tableleft">课程名称</td>
+            <td><input type="text" name="name"/></td>
         </tr>
-        <tr>
-            <td class="tableleft">密码</td>
-            <td><input type="password" name="password"  value="$!{user.password}" /></td>
+          <tr>
+            <td width="10%" class="tableleft">实验简介</td>
+            <td><input type="text" name="introduction"/></td>
+        </tr>
+          <tr>
+            <td width="10%" class="tableleft">课程教师</td>
+            <td><input type="text" name="teacher"/></td>
+        </tr>
+          <tr>
+            <td width="10%" class="tableleft">图片</td>
+            <td><input type="text" name="image_url"/></td>
         </tr>
         <tr>
             <td class="tableleft">状态</td>
             <td>
-                <input type="radio" name="status" value="0" checked /> 启用
-              <input type="radio" name="status" value="1" /> 禁用
+                <input type="radio" name="status" value="1" checked/> 启用  <input type="radio" name="status" value="0"/> 禁用
             </td>
         </tr>
         <tr>
             <td class="tableleft"></td>
             <td>
-                <button type="submit" class="btn btn-primary" type="button">保存</button>				 &nbsp;&nbsp;<button type="button" class="btn btn-success" name="backid" id="backid">返回列表</button>
+                <button type="submit" class="btn btn-primary" type="button">保存</button> &nbsp;&nbsp;<button type="button" class="btn btn-success" name="backid" id="backid">返回列表</button>
             </td>
         </tr>
     </table>
@@ -64,10 +68,13 @@
 </body>
 </html>
 <script>
-    $(function () {       
-		$('#backid').click(function(){
-				window.location.href="{:U('User/index')}";
-		 });
+    $(function () {
+        $(':checkbox[name="group[]"]').click(function () {
+            $(':checkbox', $(this).closest('li')).prop('checked', this.checked);
+        });
 
+		$('#backid').click(function(){
+				window.location.href="index.html";
+		 });
     });
 </script>
